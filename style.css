@@ -1,0 +1,111 @@
+body {
+
+    font-family: Arial, sans-serif;
+    background:  #a2c59d;
+    margin:0;
+    padding:0;
+}
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#d2e2bd;
+    margin: 50px auto;
+    padding: 60px;
+    width: 90%;
+    max-width: none;
+    min-height:400px;
+    border-radius: 10px;
+}
+
+.imagesec img {
+  max-width: 100%;
+  height: auto;
+  
+  max-height: 100%; /* keep inside container */
+  object-fit: contain;
+}
+.contsec {
+    display: flex;
+    flex-direction: column; /* stack h1,h2,p and form vertically */
+    gap: 20px; /* add spacing */
+    flex: 1; /* allow to take available space */
+}
+.formsec {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  justify-content: center;
+  flex: 1; /* take available space */
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* stack inputs vertically */
+  gap: 15px; /* space between inputs */
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input, 
+form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background: #7ca982;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6b9170;
+}
+.formsec {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  justify-content: center;
+  flex: 1; /* take available space */
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* stack inputs vertically */
+  gap: 15px; /* space between inputs */
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input, 
+form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background: #7ca982;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6b9170;
+}
+
+    
+
