@@ -1,4 +1,10 @@
-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.b {
   font-family: 'Playfair Display', serif;
   background: #a2c59d;
   margin: 0;
@@ -133,7 +139,7 @@ form input{
   justify-content: center; 
   gap: 8px;               
   background: #9DB891;
-  border: 1px solid #ffffff;
+  border: 1px solid #b9ceb3;
   border-radius: 6px;
   padding: 10px 18px;    
   font-size: 14px;
