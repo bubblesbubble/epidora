@@ -14,7 +14,7 @@
                 <h1>Epidora</h1> 
                 <h2>A gift to the skin</h2>
                 <p class="tagline">Get Started Now</p>
-                <form>
+                <form id="signupForm">
                 <label for="name">Name</label>
                 <input type="text" id="name" placeholder="Enter your name">
 
@@ -28,8 +28,8 @@
                 </form>
                 <div class="divider">Or</div> 
                 <div class="social">
-                    <button class="google-btn">Sign in with Google</button>
-                    <button class="apple-btn">Sign in with Apple</button>
+                    <button class="btn"><img src="./images/google.svg" alt="Google logo" class="logo">Sign in with Google</button>
+                    <button class="btn"><img src="./images/apple.svg" alt="Apple logo" class="logo">Sign in with Apple</button>
                 </div>
                 <p class="login-link">Have an account? &nbsp; <a href="login.html">Sign In</a></p>
                 
@@ -38,5 +38,39 @@
             <img src="./images/jelly.jpeg" alt="Jellyfish">
             </div>
         </div>
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabaseclient.js"></script>
+<script>
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            // Sign up user in Supabase
+            const { data, error } = await supabaseClient.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: { name: name }, // store name in metadata
+                },
+            });
+
+            if (error) {
+                console.error("Supabase error:", error);
+                alert("Signup failed: " + error.message);
+            } else {
+                console.log("Supabase response:", data);
+                alert("Signup successful!");
+                window.location.href = "dashboard.html";  
+            }
+        } catch (err) {
+            console.error("Unexpected error:", err);
+            alert("Something went wrong. Try again.");
+        }
+    });
+</script>
+    </body>  
 </html>
