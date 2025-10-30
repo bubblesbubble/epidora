@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Image Consult</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a2d9d5f6f5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="b2">
+    <div class="header">
+      <ul>
+        <li><a href="about.html" class="about">About Us</a></li>
+        <li>
+          <a href="image-consult.html" class="im active">Image Consult</a>
+        </li>
+        <li><a href="dashboard.html" class="home">Home</a></li>
+      </ul>
+      <img src="./images/user.png" class="prof" alt="profile icon" />
+    </div>
+
+    <div class="greet">
+      <img src="./images/jellyf.png" class="bg-img" alt="jellyfish" />
+      <div class="cont">
+        <h1 class="welc">Welcome user</h1>
+        <p class="rev">Reveal your skin story</p>
+      </div>
+    </div>
+
+    <div class="aiintro">
+      <p class="what">What's bothering your skin?</p>
+    </div>
+
+    <div class="parent">
+      <div class="aiimage">
+        <div class="image-consult-box">
+          <i
+            class="fa fa-camera"
+            style="font-size: 48px; color: #355e3b; margin-bottom: 15px"
+          ></i>
+          <h3>Upload your skin image for diagnosis</h3>
+
+          <input
+            type="file"
+            id="skinImage"
+            accept="image/*"
+            class="upload-input"
+          />
+          <button id="analyzeBtn" class="consult-button">Analyze</button>
+
+          <div id="imageResult" class="ai-response"></div>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById("analyzeBtn").addEventListener("click", async () => {
+          const fileInput = document.getElementById("skinImage");
+          if (!fileInput.files[0]) return alert("Please upload an image first!");
+
+          const formData = new FormData();
+          formData.append("image", fileInput.files[0]);
+
+          const res = await fetch("http://localhost:6000/analyze-image", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await res.json();
+          document.getElementById("imageResult").innerHTML = 
+            `<b>Detected:</b> ${data.condition} (${(data.confidence * 100).toFixed(2)}%)`;
+        });
+      </script>
+    </div>
+
+    <div class="footer"></div>
+  </body>
+</html>

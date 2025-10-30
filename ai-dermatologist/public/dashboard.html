@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>
+            Home
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body class="b2">
+        <div class="header">
+            <ul>
+                <li><a href="about.html" class="about">About Us</a></li>
+                <li><a href="image-consult.html" class="im">Image Consult</a></li>
+                <li><a href="dashboard.html" class="home">Home</a></li>
+            </ul>
+            <img src="./images/user.png" class="prof" alt="profile icon">
+        </div>
+        <div class="greet">
+            <img src="./images/jellyf.png" class="bg-img" alt="jellyfish">
+            <div class="cont">
+                <h1 class="welc">Welcome user</h1>
+                <p class="rev">Reveal your skin story</p>
+            </div>
+        </div>
+        <div class="aiintro">
+            <p class="what">What's bothering your skin?</p>
+        </div>
+        <div class="parent">
+            <div class="ai">
+                <div class="ai-box">
+                    <textarea id="concernInput" placeholder="Describe your skin concern..."></textarea>
+                    <button onclick="getConsult()">Consult</button>
+
+                    <!-- AI response appears here -->
+                    <div id="responseBox"></div>
+                    </div>
+
+                    <script src="../script.js"></script>
+            </div>
+            
+        </div>
+        <div class="footer">
+
+        </div>
+    </body>
+</html>
