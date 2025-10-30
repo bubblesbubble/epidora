@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Dataset
+ai-dermatologist/model/dataset/
+
+# Model files
+*.h5
