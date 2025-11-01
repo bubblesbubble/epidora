@@ -18,9 +18,7 @@
     <div class="header">
       <ul>
         <li><a href="about.html" class="about">About Us</a></li>
-        <li>
-          <a href="image-consult.html" class="im active">Image Consult</a>
-        </li>
+        <li><a href="image-consult.html" class="im active">Image Consult</a></li>
         <li><a href="dashboard.html" class="home">Home</a></li>
       </ul>
       <img src="./images/user.png" class="prof" alt="profile icon" />
@@ -58,26 +56,52 @@
           <div id="imageResult" class="ai-response"></div>
         </div>
       </div>
+    </div>
 
-      <script>
-        document.getElementById("analyzeBtn").addEventListener("click", async () => {
-          const fileInput = document.getElementById("skinImage");
-          if (!fileInput.files[0]) return alert("Please upload an image first!");
+    <script>
+      document.getElementById("analyzeBtn").addEventListener("click", async () => {
+        const fileInput = document.getElementById("skinImage");
+        const resultBox = document.getElementById("imageResult");
 
-          const formData = new FormData();
-          formData.append("image", fileInput.files[0]);
+        if (!fileInput.files[0]) {
+          alert("Please upload an image first!");
+          return;
+        }
 
-          const res = await fetch("http://localhost:6000/analyze-image", {
+        resultBox.innerHTML = "<div class='loading'>🔍 Analyzing your image...</div>";
+
+        const formData = new FormData();
+        formData.append("image", fileInput.files[0]);
+
+        try {
+          const res = await fetch("http://127.0.0.1:5001/analyze-image", {
             method: "POST",
             body: formData,
           });
 
+          if (!res.ok) {
+            throw new Error("Server error. Please try again.");
+          }
+
           const data = await res.json();
-          document.getElementById("imageResult").innerHTML = 
-            `<b>Detected:</b> ${data.condition} (${(data.confidence * 100).toFixed(2)}%)`;
-        });
-      </script>
-    </div>
+
+          if (data.condition) {
+            resultBox.innerHTML = `
+              <div class="ai-result-box">
+                <h3>🩺 Prediction Result</h3>
+                <p><b>Detected Condition:</b> ${data.condition}</p>
+                <p><b>Confidence:</b> ${(data.confidence * 100).toFixed(2)}%</p>
+              </div>
+            `;
+          } else {
+            resultBox.innerHTML = `<p>⚠️ No result returned. Try again.</p>`;
+          }
+        } catch (err) {
+          console.error(err);
+          resultBox.innerHTML = `<p>❌ Error analyzing image. Please ensure backend is running.</p>`;
+        }
+      });
+    </script>
 
     <div class="footer"></div>
   </body>
