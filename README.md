@@ -1,7 +1,3 @@
-Here is your cleaned, professional **README.md** without emojis and without the file structure section:
-
----
-
 # Epidora — AI Dermatologist
 
 Epidora is an AI-powered dermatology web application that analyzes skin images and provides insights, possible conditions, and skincare recommendations.
