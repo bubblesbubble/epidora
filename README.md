@@ -116,7 +116,7 @@ Epidora is intended for informational purposes only and does not replace profess
 
 ## Author
 
-Diya S
+Diya Singh
 B.Tech Student
 
 ---
@@ -130,5 +130,5 @@ B.Tech Student
 
 ---
 
-If you want, I can also provide a **minimal version**, a **resume-ready version**, or one tailored for academic submission.
+
 
