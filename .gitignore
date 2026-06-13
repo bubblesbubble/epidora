@@ -12,3 +12,5 @@ ai-dermatologist/model/dataset/
 
 # Model files
 *.h5
+
+.env
